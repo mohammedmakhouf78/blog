@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+.katex{
+  direction: ltr;
+}
+
 /* MARGINS */
 @layer base {
   .header-margin {
@@ -108,7 +112,7 @@
 
     /* paragraph */
     p {
-      @apply text-lg leading-relaxed opacity-90;
+      @apply text-lg leading-relaxed opacity-90 my-5;
     }
 
     /* url */
@@ -139,6 +143,7 @@
     /*  code */
     .astro-code {
       @apply ring-accent my-6 p-6 ring-1;
+      direction: ltr;
     }
     .astro-code code {
       @apply bg-inherit p-0 font-medium;

@@ -1,0 +1,106 @@
+---
+interface Props {
+  src: string;
+  alt?: string;
+  width?: number | string;
+  height?: number | string;
+}
+
+const {
+  src,
+  alt = "",
+  width = "100%",
+  height = "auto"
+} = Astro.props;
+---
+
+<img
+  src={src}
+  alt={alt}
+  loading="lazy"
+  style={`width:${width}; height:${height};`}
+  class="zoom-image"
+/>
+
+<style>
+.zoom-image {
+  cursor: zoom-in;
+  border-radius: 12px;
+  transition: transform .25s ease;
+}
+
+.zoom-image:hover {
+  transform: scale(1.02);
+}
+
+/* overlay created once */
+#astro-image-zoom-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+
+#astro-image-zoom-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#astro-image-zoom-overlay img {
+  max-width: 92%;
+  max-height: 92%;
+  border-radius: 14px;
+}
+</style>
+
+<script>
+  // Create overlay ONCE globally
+  const OVERLAY_ID = "astro-image-zoom-overlay";
+
+  function getOverlay(): HTMLDivElement {
+    let overlay = document.getElementById(OVERLAY_ID) as HTMLDivElement | null;
+
+    if (!overlay) {
+      overlay = document.createElement("div");
+      overlay.id = OVERLAY_ID;
+
+      const img = document.createElement("img");
+
+      overlay.appendChild(img);
+      document.body.appendChild(overlay);
+
+      // close on click
+      overlay.addEventListener("click", () => {
+        overlay!.classList.remove("open");
+      });
+
+      // close on ESC
+      window.addEventListener("keydown", (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          overlay!.classList.remove("open");
+        }
+      });
+    }
+
+    return overlay;
+  }
+
+  // Attach listener safely to THIS component instance
+  const image = document.currentScript!.previousElementSibling as HTMLImageElement;
+
+  image.addEventListener("click", () => {
+    const overlay = getOverlay();
+    const zoomedImg = overlay.querySelector("img") as HTMLImageElement;
+
+    zoomedImg.src = image.src;
+
+    overlay.classList.add("open");
+  });
+</script>

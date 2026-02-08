@@ -10,7 +10,7 @@ const { frontmatter, readTime } = Astro.props;
   title={frontmatter.title}
   description={frontmatter.description}
   author={frontmatter.author}
-  url={`https://ryze.pages.dev/${frontmatter.slug}`}
+  url={`https://blog.shamperzon.com/${frontmatter.slug}`}
   pubDate={frontmatter.date}
 >
   <ProgressBar client:idle />
@@ -18,7 +18,9 @@ const { frontmatter, readTime } = Astro.props;
     <div class="center">
       <Title frontmatter={frontmatter} readTime={readTime} />
       <section class="markdown" dir="rtl">
+        <img loading="lazy" class="my-5" alt="Mo.Makhlouf Blog intro 'بسم الله الرحمن الرحيم'" src="intro.webp">
         <slot />
+        <img loading="lazy" class="my-5" alt="Mo.Makhlouf Blog outro 'وقل ربي زدني علما'" src="outro.png">
       </section>
     </div>
   </article>

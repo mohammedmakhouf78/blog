@@ -1,8 +1,8 @@
-# Ryze
+# Mo.Makhlouf
 
-**Ryze** is a modern, reader-friendly and content-first starter built with **Astro v5**, **Tailwind CSS v4**, and optimized for SEO and responsiveness across all devices. Perfect for personal blogs and content-focused websites.
+**Mo.Makhlouf** is a modern, reader-friendly and content-first starter built with **Astro v5**, **Tailwind CSS v4**, and optimized for SEO and responsiveness across all devices. Perfect for personal blogs and content-focused websites.
 
-Read the [blog posts](https://ryze.pages.dev/) to understand how Ryze is built and how to customize it for your own site.
+Read the [blog posts](https://blog.shamperzon.com/) to understand how Mo.Makhlouf is built and how to customize it for your own site.
 
 ## Features
 
@@ -24,15 +24,15 @@ Read the [blog posts](https://ryze.pages.dev/) to understand how Ryze is built a
 ## Lighhouse Performance Scores
 
 <p align="center">
-  <a href="https://pagespeed.web.dev/analysis/https-ryze-pages-dev/rg7pfbgh1l?form_factor=desktop">
-    <img width="710" alt="Ryze Lighthouse score" src="https://github.com/8366888C/Ryze/blob/main/public/ryze-lighthouse-score.png">
+  <a href="https://pagespeed.web.dev/analysis/https-Mo.Makhlouf-pages-dev/rg7pfbgh1l?form_factor=desktop">
+    <img width="710" alt="Mo.Makhlouf Lighthouse score" src="https://github.com/8366888C/Mo.Makhlouf/blob/main/public/Mo.Makhlouf-lighthouse-score.png">
   <a>
 </p>
 
 ## Project Structure
 
 ```
-Ryze
+Mo.Makhlouf
 ├── public/
 │   └── favicon.svg
 │
@@ -113,8 +113,8 @@ Ryze
 
 ```bash
 # Clone or download the project
-git clone https://github.com/8366888C/Ryze.git
-cd Ryze
+git clone https://github.com/8366888C/Mo.Makhlouf.git
+cd Mo.Makhlouf
 
 # Install dependencies
 npm install
