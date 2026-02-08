@@ -1,0 +1,48 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  author: string;
+  url: string;
+  pubDate?: Date;
+}
+
+import "@fontsource-variable/space-grotesk";
+import "@fontsource/ibm-plex-mono";
+import Seo from "../components/Seo.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+const { title, description, author, url, pubDate } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <Seo {title} {description} {author} {url} {pubDate} />
+    <script is:inline>
+      const saved = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      ).matches;
+      document.documentElement.classList.add(
+        saved || (prefersDark ? "dark" : "light"),
+      );
+    </script>
+  </head>
+  <body class="body-margin">
+    <Header />
+    <main class="main-margin bg-background relative z-1 min-h-svh">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
